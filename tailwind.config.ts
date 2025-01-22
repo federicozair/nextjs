@@ -8,9 +8,13 @@ export default {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: "15px",
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        accent: "#FF8F9C", // Agregué el '#' para que sea un código hexadecimal válido
+        blackish: "#1b1b1b",
       },
     },
   },
