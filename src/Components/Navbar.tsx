@@ -10,7 +10,7 @@ const Navbar = () => {
           <Link className="navbar_link relative" href="/">OFERTAS</Link> 
           <Link className="navbar_link relative" href="/">PANTALONES</Link> 
           <Link className="navbar_link relative" href="/">REMERAS</Link> 
-          <Link className="navbar_link relative" href="/">INVIERNO</Link> 
+          <Link className="navbar_link relative" href="/">ADMIN</Link> 
         </div>
       </div>
     </div>

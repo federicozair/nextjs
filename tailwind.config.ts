@@ -13,7 +13,7 @@ export default {
         padding: "15px",
       },
       colors: {
-        accent: "#FF8F9C", // Agregué el '#' para que sea un código hexadecimal válido
+        accent: "#FF8F9C", 
         blackish: "#1b1b1b",
       },
     },
