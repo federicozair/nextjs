@@ -1,38 +1,36 @@
-import React from 'react';
-import Image from 'next/image'; 
+"use client";
+import React from "react";
 
-interface PropsType {
+interface ProductCardProps {
   img: string;
   title: string;
-  desc: string; 
-  price: string;
-  category: string; 
+  price: number;
+  category: string;
+  desc: string; // Agregar la propiedad desc
+  onAddToCart: () => void;
 }
 
-const ProductsCard: React.FC<PropsType> = ({ 
+const ProductsCard: React.FC<ProductCardProps> = ({
   img,
   title,
-  desc,
   price,
-  category, // Ahora disponible si quieres usarla
+  category,
+  desc,
+  onAddToCart,
 }) => {
   return (
-    <div className="px-4 border border-gray-200 rounded-xl max-w-[400px]">
-      <div>
-        <Image
-          className="w-full h-auto"
-          src={img}
-          width={200}
-          height={300}
-          alt={title}
-        />
-      </div>
-      <div className="mt-2">
-        <h2 className="text-lg font-bold">{title}</h2>
-        {desc && <p className="text-sm text-gray-500">{desc}</p>} {/* Si desc es opcional */}
-        <p className="text-lg font-semibold text-gray-800">{price}</p>
-        {category && <p className="text-xs text-gray-400">{category}</p>} {/* Si category es opcional */}
-      </div>
+    <div className="bg-white shadow-lg rounded-lg p-4">
+      <img src={img} alt={title} className="w-full h-60 object-cover rounded-md mb-4" />
+      <h3 className="font-semibold text-lg">{title}</h3>
+      <p className="text-sm text-gray-500">{category}</p>
+      <p className="text-xl font-bold mt-2">${price}</p>
+      <p className="text-sm text-gray-600 mt-2">{desc}</p> {/* Aquí mostramos el desc */}
+      <button
+        onClick={onAddToCart}
+        className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+      >
+        Añadir al carrito
+      </button>
     </div>
   );
 };

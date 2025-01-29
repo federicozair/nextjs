@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
+"use client";
 
-const User = ({ onSubmit }) => {
+import React, { useState } from "react";
+import { useShop } from "../../Context/ShopContext";
+
+const User = () => {
+  const { setUser, completePurchase } = useShop();
+
   const [formData, setFormData] = useState({
-    name: '',
-    dni: '',
-    address: '',
-    email: '',
+    name: "",
+    dni: "",
+    address: "",
+    email: "",
   });
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSubmit(formData);
+    setUser(formData); // Guarda el usuario
+    completePurchase(); // Completa la compra con el carrito actual
+    alert("¡Compra realizada con éxito!");
   };
 
   return (
@@ -60,10 +64,7 @@ const User = ({ onSubmit }) => {
           className="block border p-2 mb-2 w-full"
           required
         />
-        <button
-          type="submit"
-          className="bg-green-500 text-white px-4 py-2 rounded"
-        >
+        <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">
           Submit
         </button>
       </form>
@@ -72,3 +73,4 @@ const User = ({ onSubmit }) => {
 };
 
 export default User;
+

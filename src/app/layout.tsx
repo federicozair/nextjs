@@ -6,11 +6,9 @@ import HeaderMain from "../Components/HeaderMain";
 import Navbar from "../Components/Navbar";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import { ShopProvider } from "../Context/ShopContext"; // Importar el contexto
 
-
-
-
-
+// Fuentes
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,14 +29,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Ajustar cartItems con las propiedades title y price
+  const cartItems = [
+    { id: 1, quantity: 2, title: "Jogger Cargo Celeste", price: 401 },
+    { id: 2, quantity: 3, title: "Jogger Cargo Verde Militar", price: 304 },
+    { id: 3, quantity: 1, title: "Jogger Cargo Celeste Pastel", price: 475 },
+  ];
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <HeaderTop/>
-          <HeaderMain/>
-          <Navbar/>
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ShopProvider> {/* Envolver toda la aplicación con el contexto */}
+          <HeaderTop />
+          <HeaderMain cartItems={cartItems} />
+          <Navbar />
+          {children}
+        </ShopProvider>
       </body>
     </html>
   );

@@ -1,12 +1,8 @@
 "use client";
-
 import React from 'react';
 import Slider from "react-slick";
-import Slide from  "./Slide";
-
-
 import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick-theme.css"; 
 
 const Hero = () => {
   const settings = {
@@ -18,33 +14,19 @@ const Hero = () => {
     pauseOnHover: false,
   };
 
-  const SlideData = [
-    {
-      id: 1,
-      img: "./Assets/banner1.png", 
-    },
-    {
-      id: 2,
-      img: "./Assets/banner2.jpg", 
-    },
-    {
-      id: 3,
-      img: "./Assets/banner3.jpg", 
-    },
-  ];
-
   return (
-    <div>
-      <div className="container pt-6 lg:pt-0">
-        <Slider {...settings}>
-          {SlideData.map((item) => (
-            <Slide
-              key={item.id}
-              img= {item.img}
-                />
-          ))}
-        </Slider>
-      </div>
+    <div className="container pt-6 lg:pt-0">
+      <Slider {...settings}>
+        <div>
+          <img src="/assets/banner/banner1.png" alt="Banner 1" />
+        </div>
+        <div>
+          <img src="/assets/banner/banner2.jpg" alt="Banner 2" />
+        </div>
+        <div>
+          <img src="/assets/banner/banner3.jpg" alt="Banner 3" />
+        </div>
+      </Slider>
     </div>
   );
 };
